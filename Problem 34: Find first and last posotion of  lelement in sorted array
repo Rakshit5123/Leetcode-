@@ -1,0 +1,20 @@
+class Solution {
+public:
+    vector<int> searchRange(vector<int>& nums, int target)
+     {
+        int counti = 0 ;
+        int left = 0;
+        int right = nums.size() - 1;
+        while (left <= right && nums[left]!= target) {
+            left++;
+        }
+        while (right>= left && nums[right]!= target){
+            right --;
+        }
+        if(left>right){
+            return{-1,-1};
+        }
+        return{left,right};
+     }
+    
+};
