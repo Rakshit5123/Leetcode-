@@ -1,0 +1,17 @@
+Newton’s (Babylonian) Method
+
+class Solution {
+public:
+    int mySqrt(int x) {
+        long guess = x;
+        if (x == 0) return 0;
+        while (guess * guess > x) {
+            guess = (guess + x / guess) / 2;
+        }
+        return (int)guess;
+    }
+};
+
+
+
+Binary Search
