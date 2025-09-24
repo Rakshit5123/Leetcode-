@@ -1,0 +1,12 @@
+367. Valid Perfect Square
+class Solution {
+public:
+    bool isPerfectSquare(int num) {
+        if (num < 2) return true; 
+        long sample = num;  
+        while (sample * sample > num) {
+            sample = (sample + num / sample) / 2;
+        }
+        return sample * sample == num;
+    }
+};
