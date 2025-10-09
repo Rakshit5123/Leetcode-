@@ -1,0 +1,27 @@
+class Solution {
+public:
+   vector<int> successfulPairs(vector<int>& spells, vector<int>& potions, long long success) {
+    int n = spells.size(), m = potions.size();
+    vector<pair<int, int>> spellIdx;
+    for (int i = 0; i < n; i++) spellIdx.push_back({spells[i], i});
+    
+    sort(spellIdx.begin(), spellIdx.end());
+    sort(potions.begin(), potions.end());
+    
+    vector<int> res(n);
+    int j = m - 1;
+    
+    for (int i = 0; i < n; i++) {
+        // Move i from smallest spell to largest
+        int spell = spellIdx[i].first;
+        // Move potion pointer left while the pair is successful
+        while (j >= 0 && (long long)spell * potions[j] >= success) {
+            j--;
+        }
+        // Successful pairs = potions to the right of j
+        res[spellIdx[i].second] = m - (j + 1);
+    }
+    
+    return res;
+}
+};
